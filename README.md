@@ -9,6 +9,15 @@
 2. **On Mac:** Browse to http://localhost:3000 
 3. **On Windows:** browse to http://192.168.99.100:3000 (if you are using docker-machine instead of the native docker installation)
 
+## Explanation: Security by obscurity
+We'll dive into security by obscurity.
+
+## Explanation: SQL Injection
+We'll start with a group session explaining SQL Injection.
+
+## Demo
+Time to see SQL Injection in action, demonstrate to obtain list of users.
+
 ## Lab 1: SQL Injection
 
 ### Assignment
@@ -100,11 +109,19 @@ If you input `' or 1=1--` and any password you will authenticate the first entry
 Think on how you would mitigate this security vulnerability if you'd encounter it in your workplace. We'll discuss this at the end of the assignment.
 
 ### Optional
-1. What other payloads can you think of that would allow you to login? Since you technically have full control of the query there are many!
-2. Do you see something else very wrong with this form, could we maybe do more than login with SQL Injection?
-
+What other payloads can you think of that would allow you to login? Since you technically have full control of the query there are many!
 
 #### Notes
-Demo how we get a list of users
+As part of the Demo/Presentation explain how we get a list of users
 - http://localhost:3000/rest/products/search?q=%27;
 - https://pwning.owasp-juice.shop/appendix/solutions.html#order-the-christmas-special-offer-of-2014
+
+## Lab 2: DOM XSS
+
+How to spot, reflected in DOM
+In Search
+`<iframe src="javascript:alert(`xss`)">` 
+Figure out the code that enables this
+Danger of http://localhost:3000/#/search?q=bla (remote delivery)
+
+## Lab 3: Persisted XSS attack
