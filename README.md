@@ -12,7 +12,7 @@
 ## Lab 1: SQL Injection
 
 ### Assignment
-Somewhere on the site there is a severe SQL Injection vulnerability, can you locate and exploit it?
+Somewhere on the site there is another severe SQL Injection vulnerability, can you locate and exploit it? The goal is to login to the website without supplying a password. 
 
 <details>
   <summary>Hint 1</summary>
@@ -76,7 +76,7 @@ So we know we need to adjust the query, and that we can use the form to adjust t
   <summary>Hint 7</summary>
 
 
-Notice how `'` behaves differently and does not give a proper error instead it provides an error like `[object Object]`. This is an indication something is quite seriously wrong.
+Notice how `'` behaves differently and does not give a proper error instead it provides an error like `[object Object]` above the email field. This is an indication something is quite seriously wrong.
 
 </details>
 
@@ -147,7 +147,7 @@ For example try to search with: `<b style="color:red;">WOW, BIG MISTAKE</b>`. Ca
   <summary>Hint 4 Final Solution</summary>
 
 
-  For example use `<iframe src="javascript:alert(`xss`)">` in the search field. Also notice that we can use this delivery remotely since the search query is in the page URL: `http://localhost:3000/#/search?q=%3Ciframe%20src%3D%22javascript:alert(%60xss%60)%22%3E`. We just need to encode the URL.
+  For example use `<iframe src="javascript:alert('xss')">` in the search field. Also notice that we can use this delivery remotely since the search query is in the page URL: `http://localhost:3000/#/search?q=%3Ciframe%20src%3D%22javascript:alert(%60xss%60)%22%3E`. We just need to encode the URL.
 
 
 </details>
@@ -162,7 +162,7 @@ If you are familiar with frontend try to make the website display a 'YOU HAVE WO
 For the next lab we will use multiple exploits and configuration mistakes together to attack the users of the website. Our persisted XSS attack utilize a vulnerability in a javascript library used by the application. The prerequisites steps below explain how we would find out that the library is used. 
 
 <details>
-  <summary>Prerequisites</summary>
+  <summary>Prerequisite knowledge</summary>
 
   1. There is a serious misconfiguration on the webserver of this site, ftp access is available on `http://localhost:3000/ftp` on Mac and `http://192.168.99.100:3000/ftp` on Windows.
   2. Notice that a file exists with the name of `package.json.bak` For those unfamiliar a `package.json` file is a file used in frontend applications to document which versions need to be installed of dependencies.
@@ -207,7 +207,7 @@ The exploit is located on a place where you can add content for other users to s
   <summary>Hint 2</summary>
 
 
-You submit feedback on one place and it is visable on another place. Can you find such a usecase on the site?
+You submit feedback on one place and it is visible on another place. Can you find such a usecase on the site?
 
 
 </details>
@@ -241,7 +241,7 @@ Try a payload of `<<script>Foo</script>iframe src="javascript:alert('xss')">`.
 ### Mitigation
 Think on how you would mitigate this security vulnerability if you'd encounter it in your workplace. We'll discuss this at the end of the assignment.
 
-## Lab 3: Redirect a user to your malicious site
+## Lab 4: Redirect a user to your malicious site
 The Juice Shop has quite a few redirects to social media pages and such, we can utilize these to redirect to our own malicious site. We can then trick the user into clicking on these links and redirect them to our own site. 
 
 ### Assignment
